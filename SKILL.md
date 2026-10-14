@@ -31,6 +31,7 @@ description: H3XG 短剧生产 Agent（XG＝西瓜）：西瓜短剧 Agent 的�
 - 派发：`bin/dispatch_wf.py`（参数化：提示词文件/时长/画幅/种子/图槽/输出目录；自动生成等长静音并灌三路音频；含轮询与下载，results URL 仅 24h 有效、成功后立即下载）。
 - 探针：`bin/probe_step1.py`（零扣费查激活状态：810 未激活 / 803 已激活）；节点普查 `bin/census_nodes.py`（bogus 字段哨兵法，全程零建任务零扣费）。
 - 节点图谱：`references/node_map.md`（2026-10-14 普查定版，42 节点）。
+- 顶级动作库（包内整合，2026-10-15 用户令）：`references/action-library/`——源自 onlyoyrao999/D-Z-P-Z-W 的动作数据全套：`core_actions_32.md`（32 式核心动作）、`ultimate_moves_111.md`（111 式终极奥义，31 个流派系列）、`shot_recipes_10.md`（10 张分镜配方卡）。本包写打斗/动作段落时查此库取招式、运镜与配方；只借动作技法，不改本包出口、节点与西瓜流水线。
 - 鉴权：RunningHub 走 surrogate 凭据 `custom.runninghub`（dynamic_credentials helper），脚本内已封装，Key 不落盘、不进包。
 - 交付盘：Google Drive「成片」文件夹（hatch_gws_cli drive +upload --parent <成片夹id>）。
 
@@ -55,6 +56,7 @@ description: H3XG 短剧生产 Agent（XG＝西瓜）：西瓜短剧 Agent 的�
    - 签名造型逐项写死（如刁哥：纯黑棒球帽**正戴、帽檐朝前**，写明 never backwards）。
    - **台词次数写死**：只说一句的，必须明写 speaks exactly once, then closes his mouth and stays silent——不写死，模型会把同一句重复说。
    - 声音设定只写拟音白名单（环境声/动作声），无配乐时 non_diegetic_music 写 N/A。
+   - **动作段落**：凡打斗、追逐、对决、终结技，先查 `references/action-library/` 取材——核心动作用 32 式定动作质感与运镜，终结技从 111 式里按角色流派选招（spatialAnchor/startPose/charging/execution 四段照库落词），镜头编排套 10 张配方卡的能量阶梯；取到的招式仍要按本包六段式与因果链改写落词，不许整段照搬库里的示例文案。
 4. **派发前探针**：`bin/probe_step1.py` 确认 803；810 就停下报用户去网页运行一次，不许换出口、不许用其他生成方式顶替。
 5. **派发**：`bin/dispatch_wf.py`——三路音频（38/67/68）一律灌**与时长等长的静音 WAV** 顶掉预置样音（有台词也照灌：对白由模型按提示词原生生成，静音只堵样音、不堵原生声）；Standard 实例；记任务号。
 6. **取回**：轮询到 SUCCESS 立即下载原片（原生尺寸如 736×1280，交付不裁不缩）。
