@@ -8,18 +8,15 @@
 - 定向字段验证（成对 bogus 哨兵法）全部命中，与 ai-app 2086289185186603010 的映射逐项一致。
 
 ## 派发口（已实派验证）
-| 节点.字段 | 用途 | 首案取值 |
+| 节点.字段 | 用途 | 示例取值 |
 | :--- | :--- | :--- |
-| 25.value | 提示词（Ref2VA 六段式全文） | prompt_v1.txt |
+| 25.value | 提示词（Ref2VA 六段式全文） | — |
 | 28.value | 时长（秒） | 5 |
 | 26.aspect_ratio | 画幅 | `9:16 (Portrait Widescreen)` |
-| 5.noise_seed | 种子 | 20261014 |
-| 18.image | 参考图槽 0（主角三视图卡） | diaoge_card.png |
-| 23.image | 参考图槽 1（场景图） | scene_ancient_market.png |
+| 5.noise_seed | 种子 | 整数 |
+| 18.image | 参考图槽 0（主角三视图卡） | — |
+| 23.image | 参考图槽 1（场景图） | — |
 | 22/24/32/33/34/35/76/77.image | 参考图槽 2–9（备用） | — |
-| 38/67/68.audio | 三路音频：一律灌等长静音 WAV | silence_5s.wav |
+| 38/67/68.audio | 三路音频：一律灌等长静音 WAV | — |
 
-注：此流**没有 74/75 视频槽**，76/77 均为图槽（.video 字段验证不存在）；输出节点 17（mp4）。实例规格 Standard（instanceType=default）。results URL 约 24h 有效，SUCCESS 后立即下载。
-
-## 首案实派
-任务 2110390145353216002：上传 3 件（卡/场景图/静音）→ 建任务 → 约 3 分钟 SUCCESS → 原片 736×1280、5.167s、H.264＋AAC。详见 case_2026-10-14_diaoge_ancient.md。
+注：此流**没有 74/75 视频槽**，76/77 均为图槽（.video 字段验证不存在）；输出节点 17（mp4）。实例规格 Standard（instanceType=default）。results URL 约 24h 有效，SUCCESS 后立即下载。实派已验证：上传参考图/静音 → 建任务 → SUCCESS → 原片 736×1280、H.264＋AAC。

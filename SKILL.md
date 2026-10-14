@@ -11,7 +11,7 @@ description: H3XG 短剧生产 Agent（XG＝西瓜）：西瓜短剧 Agent 的�
 - **出图**：分工定死——**三视图等现成图是现成的，原图直用、一个像素不许动**；没有的图（如场景图）才由 Agent 在本地绘制。
 - **出片**：只走云端 RunningHub 工作流 API 生成，本 Agent 不用本地 ComfyUI、不用宿主原生视频生成顶替。
 
-本包**独立自含**：脚本、节点图谱、案例都在本目录内，不依赖、不混用其他技能包的派发器与节点映射。
+本包**独立自含**：脚本、节点图谱都在本目录内，不依赖、不混用其他技能包的派发器与节点映射。
 
 ## 第一次安装（First Install）
 1. 拉取第一个 Agent 技能——西瓜短剧 Agent 本体：
@@ -53,7 +53,7 @@ description: H3XG 短剧生产 Agent（XG＝西瓜）：西瓜短剧 Agent 的�
    - 场景图等缺图：Agent 本地绘制——纯场景、无人物（场景就是场景）、构图与画幅与成片一致；画完自检再用。
 3. **写提示词**：按 MiniMax H3 官方 Ref2VA 六段式（subject_definitions → summary → retention_analysis → detailed_description → overall_soundscape → non_diegetic_music），全文英文、台词只用中文 `<d>[中文] …</d>` 并带 (Sx) 说话人编号；主体长相只许引用参考图（「face 1:1 identical to <Picture N>」），不许用文字复述五官。
    - 签名造型逐项写死（如刁哥：纯黑棒球帽**正戴、帽檐朝前**，写明 never backwards）。
-   - **台词次数写死**：只说一句的，必须明写 speaks exactly once, then closes his mouth and stays silent（教训见案例：没写死时模型把同一句说了两遍）。
+   - **台词次数写死**：只说一句的，必须明写 speaks exactly once, then closes his mouth and stays silent——不写死，模型会把同一句重复说。
    - 声音设定只写拟音白名单（环境声/动作声），无配乐时 non_diegetic_music 写 N/A。
 4. **派发前探针**：`bin/probe_step1.py` 确认 803；810 就停下报用户去网页运行一次，不许换出口、不许用其他生成方式顶替。
 5. **派发**：`bin/dispatch_wf.py`——三路音频（38/67/68）一律灌**与时长等长的静音 WAV** 顶掉预置样音（有台词也照灌：对白由模型按提示词原生生成，静音只堵样音、不堵原生声）；Standard 实例；记任务号。
@@ -72,6 +72,3 @@ description: H3XG 短剧生产 Agent（XG＝西瓜）：西瓜短剧 Agent 的�
 4. 三路静音等长覆盖，一路不许缺；不许发空值关音频。
 5. 提示词以官方六段式为准，改词只改一个变量，改完核对落地再派（同词连败两版停下来诊断，不许无脑重派）。
 6. 质检不过自己修/重派；只有超预算或修不好才上报用户。
-
-## Cases
-- `references/case_2026-10-14_diaoge_ancient.md`：首案《刁哥穿越到古代》5 秒——全流程实证与台词重复教训。
