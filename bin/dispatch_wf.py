@@ -13,7 +13,10 @@ Exit result (JSON) is written to <out-dir>/results.json; the mp4 is
 downloaded to <out-dir>/seg_raw.mp4.
 """
 import sys, os, json, time, wave, argparse, mimetypes, urllib.request
-sys.path.insert(0, "/opt/hatch/skills/skill-creator/bin")
+for _p in ("/opt/hatch/workflow-skills/custom-connector-setup/bin",
+           "/opt/hatch/skills/skill-creator/bin"):
+    if os.path.isdir(_p):
+        sys.path.insert(0, _p)
 from dynamic_credentials import add_surrogate_to_request
 
 BASE = "https://www.runninghub.cn"

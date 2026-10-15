@@ -1,6 +1,10 @@
 #!/usr/bin/env python3
+import os
 import sys, json, urllib.request, urllib.error
-sys.path.insert(0, "/opt/hatch/skills/skill-creator/bin")
+for _p in ("/opt/hatch/workflow-skills/custom-connector-setup/bin",
+           "/opt/hatch/skills/skill-creator/bin"):
+    if os.path.isdir(_p):
+        sys.path.insert(0, _p)
 from dynamic_credentials import add_surrogate_to_request
 BASE="https://www.runninghub.cn"; WF="2110385615559806978"
 def post(ep, nid):
