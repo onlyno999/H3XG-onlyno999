@@ -31,7 +31,7 @@ description: H3XG 短剧生产 Agent（XG＝西瓜）：西瓜短剧 Agent 的�
 - 派发：`bin/dispatch_wf.py`（参数化：提示词文件/时长/画幅/种子/图槽/输出目录；自动生成等长静音并灌三路音频；含轮询与下载，results URL 仅 24h 有效、成功后立即下载）。
 - 探针：`bin/probe_step1.py`（零扣费查激活状态：810 未激活 / 803 已激活）；节点普查 `bin/census_nodes.py`（bogus 字段哨兵法，全程零建任务零扣费）。
 - 节点图谱：`references/node_map.md`（2026-10-14 普查定版，42 节点）。
-- 顶级动作库（包内整合，2026-10-15 用户令）：`references/action-library/`——源自 onlyoyrao999/D-Z-P-Z-W 的动作数据全套：`core_actions_32.md`（32 式核心动作）、`ultimate_moves_111.md`（111 式终极大招，31 个流派系列）、`shot_recipes_10.md`（10 张分镜配方卡）。本包写打斗/动作段落时查此库取招式、运镜与配方；只借动作技法，不改本包出口、节点与西瓜流水线。
+- 顶级动作库（包内整合，2026-10-15 用户令）：`references/action-library/`——源自 onlyoyrao999/D-Z-P-Z-W 的动作数据全套：`core_actions_32.md`（32 式核心动作）、`ultimate_moves_111.md`（111 式终极大招＋法天象地增补 5 式共 116 式，32 个流派系列）、`shot_recipes_10.md`（10 张分镜配方卡）。本包写打斗/动作段落时查此库取招式、运镜与配方；只借动作技法，不改本包出口、节点与西瓜流水线。
 - 鉴权：RunningHub 走 surrogate 凭据 `custom.runninghub`（dynamic_credentials helper），脚本内已封装，Key 不落盘、不进包。
 - 交付盘：Google Drive「成片」文件夹（hatch_gws_cli drive +upload --parent <成片夹id>）。
 
