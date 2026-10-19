@@ -25,6 +25,10 @@
 ## Tooling
 - 西瓜本体：`~/workspace/xigua-drama-agent`（FastAPI :5678＋React 前端；本 Agent 只用其前半截流水线，不用它的本地 ComfyUI 算力）。
 - 云端出口：RunningHub **workflow** `2110385615559806978`《MiniMax H3加速优化版 全能参考(9图 / 3音频 / 3视频)》，端点 `POST /openapi/v2/run/workflow/2110385615559806978`，Standard 实例（`instanceType=default`）。**不是** ai-app 2086289185186603010——同名同家族、不同出口，本包只认工作流 ID。
+- **出口地址（钉死登记，用户 2026-10-19 亲定）**：
+  - **出口地址**：https://www.runninghub.cn/post/2086280720103858177
+  - **名称**：MiniMax H3加速优化版 全能参考(9图 / 3音频 / 3视频)
+  - **核对规矩**：以后走 H3XG 开始做片之前，必须先核对本登记——出口地址、名称、ID 三项对得上才许建单；对不上立刻停下报用户，不许拿别的出口顶替。
 - 派发：`bin/dispatch_wf.py`（参数化：提示词文件/时长/画幅/种子/图槽/输出目录；自动生成等长静音并灌三路音频；含轮询与下载，results URL 仅 24h 有效、成功后立即下载）。
 - 探针：`bin/probe_step1.py`（零扣费查激活状态：810 未激活 / 803 已激活）；节点普查 `bin/census_nodes.py`（bogus 字段哨兵法，全程零建任务零扣费）。
 - 节点图谱：`references/node_map.md`（2026-10-14 普查定版，42 节点）。
