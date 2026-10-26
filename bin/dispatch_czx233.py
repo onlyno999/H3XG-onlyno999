@@ -1,27 +1,14 @@
 #!/usr/bin/env python3
-"""Dispatcher for the CZX233 exit inside H3XG-onlyno999 (API-only, no canvas).
+"""Dispatcher for the CZX233 exit (API-only).
 Workflow 2108739345095155713 (H3 lossless fusion single-sample).
-API-VERIFIED node map (2026-10-26 probes + direct dispatch, free 803 validation):
+API node map (2026-10-26 probes + direct dispatch):
 238/value prompt / 227/value duration seconds / 228 aspect_ratio + megapixels /
 129/noise_seed (control_after_generate=randomize: a set seed may still be randomized) /
 199/image reference image 1 / 188/image reference image 2.
-API line hangs at most 2 images, no video ref, no audio ref (canvas-only nodes
-189/190-192/185/182 are rejected by the API with node_not_found_in_workflow 803).
-Per user direction 2026-10-26: this exit runs API-only; do not route through the canvas.
-Dialogue is native via prompt (<d> + (Sx)); no audio refs are hung."""Dispatcher for CZX233 workflow 2108739345095155713 (H3 lossless fusion single-sample).
-Node mapping from the 2026-10-26 canvas probe (best-known; ref switches unconfirmed):
-238 prompt / 227 duration value / 228 asp+megapixels / 129 noise_seed /
-199 image1 / 188 image2 / 189 image3 / 185 video1 (fieldName video, best guess).
-No audio refs (dialogue is native via prompt). No 4th image (node number unconfirmed)."""Dispatcher for the CZX233 exit inside H3XG-onlyno999 (API-only, no canvas).
-Workflow 2108739345095155713 (H3 lossless fusion single-sample).
-API-VERIFIED node map (2026-10-26 probes + direct dispatch, free 803 validation):
-238/value prompt / 227/value duration seconds / 228 aspect_ratio + megapixels /
-129/noise_seed (control_after_generate=randomize: a set seed may still be randomized) /
-199/image reference image 1 / 188/image reference image 2.
-API line hangs at most 2 images, no video ref, no audio ref (canvas-only nodes
-189/190-192/185/182 are rejected by the API with node_not_found_in_workflow 803).
-Per user direction 2026-10-26: this exit runs API-only; do not route through the canvas.
-Dialogue is native via prompt (<d> + (Sx)); no audio refs are hung."""
+API hangs 199/188 normally; canvas frontend switches do not affect the API.
+Full slot table (6 images + 3 audio + 1 video) is in references/node_map_czx233.md.
+Dialogue is native via prompt (<d> + (Sx)); no audio refs are hung.
+"""
 import sys, os, json, time, subprocess, urllib.request, argparse
 
 sys.path.insert(0, "/opt/hatch/workflow-skills/custom-connector-setup/bin")
