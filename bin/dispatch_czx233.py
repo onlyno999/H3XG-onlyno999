@@ -26,7 +26,7 @@ ap.add_argument("--prompt-file", required=True)
 ap.add_argument("--duration", type=float, default=10)
 ap.add_argument("--seed", type=int, default=20261060)
 ap.add_argument("--aspect", default="9:16 (Portrait Widescreen)")
-ap.add_argument("--megapixels", type=float, default=1.1)
+ap.add_argument("--megapixels", type=float, default=0.94)  # B分辨率定死：736x1280 / 1280x736，见SKILL
 ap.add_argument("--out", required=True)
 ap.add_argument("--images", nargs="*", default=[])
 ap.add_argument("--videos", nargs="*", default=[])
