@@ -4,7 +4,7 @@ Workflow 2113599252554407938 (CZX233 【最强单采】双重显存优化1.0画�
 API node map (2026-10-26 probes + direct dispatch):
 238/value prompt / 227/value duration seconds / 228 aspect_ratio + megapixels /
 129/noise_seed (control_after_generate=randomize: a set seed may still be randomized) /
-199/image reference image 1 / 188/image reference image 2.
+199/image ref1 / 188/image ref2 / 189/image ref3 / 190/image ref4 / 191/image ref5 / 192/image ref6 (6 images total, API direct).
 API hangs 199/188 normally; canvas frontend switches do not affect the API.
 Full slot table (6 images + 3 audio + 1 video) is in references/node_map_czx233.md.
 Dialogue is native via prompt (<d> + (Sx)); no audio refs are hung.
