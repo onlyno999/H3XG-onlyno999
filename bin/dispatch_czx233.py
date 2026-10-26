@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Dispatcher for the CZX233 exit (API-only).
-Workflow 2108739345095155713 (H3 lossless fusion single-sample).
+Workflow 2113599252554407938 (CZX233 【最强单采】双重显存优化1.0画质30秒直出流, supersedes 2108739345095155713 on 2026-10-26).
 API node map (2026-10-26 probes + direct dispatch):
 238/value prompt / 227/value duration seconds / 228 aspect_ratio + megapixels /
 129/noise_seed (control_after_generate=randomize: a set seed may still be randomized) /
@@ -19,7 +19,7 @@ except ImportError:
     from dynamic_credentials import add_surrogate_to_request
 
 BASE = "https://www.runninghub.cn"
-WF = "2108739345095155713"
+WF = "2113599252554407938"
 
 ap = argparse.ArgumentParser()
 ap.add_argument("--prompt-file", required=True)
