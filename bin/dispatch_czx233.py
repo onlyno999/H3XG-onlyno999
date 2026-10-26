@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 """Dispatcher for the CZX233 exit (API-only).
-Workflow 2114694719098941442 (CZX233 【最强单采】双重显存优化高画质30秒直出流, supersedes 2108739345095155713 on 2026-10-26).
+Workflow 2114711331533316098 (CZX233 【最强单采】双重显存优化高画质30秒直出流, supersedes 2108739345095155713 on 2026-10-26).
 API node map (2026-10-26 probes + direct dispatch):
 238/value prompt / 227/value duration seconds / 228 aspect_ratio + megapixels /
 129/noise_seed (control_after_generate=randomize: a set seed may still be randomized) /
 199/image ref1 / 188/image ref2 / 189/image ref3 / 190/image ref4 / 191/image ref5 / 192/image ref6 (6 images total, API direct).
-API hangs 199/188 normally; canvas switch 200 CONTROLS API availability: images 1-3 ON, 4-6 OFF by default in new workflow 2114694719098941442, so 190/191/192 return node_not_found unless the corresponding switch row in node 200 is opened first (2026-10-26 canvas check).
+API hangs 199/188 normally; canvas switch 200 CONTROLS API availability: images 1-3 ON, 4-6 OFF by default in new workflow 2114711331533316098, so 190/191/192 return node_not_found unless the corresponding switch row in node 200 is opened first (2026-10-26 canvas check).
 Full slot table (6 images + 3 audio + 1 video) is in references/node_map_czx233.md.
 Dialogue is native via prompt (<d> + (Sx)); no audio refs are hung.
 """
@@ -19,7 +19,7 @@ except ImportError:
     from dynamic_credentials import add_surrogate_to_request
 
 BASE = "https://www.runninghub.cn"
-WF = "2114694719098941442"
+WF = "2114711331533316098"
 
 ap = argparse.ArgumentParser()
 ap.add_argument("--prompt-file", required=True)
