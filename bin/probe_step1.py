@@ -6,7 +6,7 @@ for _p in ("/opt/hatch/workflow-skills/custom-connector-setup/bin",
     if os.path.isdir(_p):
         sys.path.insert(0, _p)
 from dynamic_credentials import add_surrogate_to_request
-BASE="https://www.runninghub.cn"; WF="2110385615559806978"
+BASE="https://www.runninghub.cn"; WF="2115084874603384833"
 def post(ep, nid):
     payload={"nodeInfoList":[{"nodeId":str(nid),"fieldName":"__bogus_probe_field__","fieldValue":"x"}]}
     req=urllib.request.Request(BASE+f"/openapi/v2/run/{ep}/{WF}", data=json.dumps(payload).encode(), headers={"Content-Type":"application/json","User-Agent":"probe/1.0"}, method="POST")

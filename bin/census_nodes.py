@@ -7,7 +7,7 @@ for _p in ("/opt/hatch/workflow-skills/custom-connector-setup/bin",
         sys.path.insert(0, _p)
 from dynamic_credentials import add_surrogate_to_request
 from concurrent.futures import ThreadPoolExecutor, as_completed
-BASE="https://www.runninghub.cn"; WF="2110385615559806978"; EP="workflow"
+BASE="https://www.runninghub.cn"; WF="2115084874603384833"; EP="workflow"
 LO,HI=int(sys.argv[1]),int(sys.argv[2])
 def post(nid):
     payload={"nodeInfoList":[{"nodeId":str(nid),"fieldName":"__bogus_probe_field__","fieldValue":"x"}]}

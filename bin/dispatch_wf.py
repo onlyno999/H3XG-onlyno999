@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""H3XG dispatcher — RunningHub workflow 2110385615559806978
+"""H3XG dispatcher — RunningHub workflow 2115084874603384833
 《MiniMax H3加速优化版 全能参考(9图 / 3音频 / 3视频)》workflow form.
 
 Usage:
@@ -7,8 +7,10 @@ Usage:
       --image 18=card.png --image 23=scene.png \
       --out-dir ./prod [--seed 20261014] [--aspect "9:16 (Portrait Widescreen)"]
 
-Audio slots 38/67/68 are always filled with an equal-length silence WAV
-(generated on the fly) to block the workflow's preset sample audio.
+New A (2026-10-27, user confirmed): preset sample audio is already turned
+off inside this workflow by the user, so audio slots 38/67/68 are NOT filled
+with silence any more. Old H3RPO three-silence rule does NOT apply to new A.
+Video: only slot 51 is hung; 53 is NOT hung (user 2026-10-27).
 Exit result (JSON) is written to <out-dir>/results.json; the mp4 is
 downloaded to <out-dir>/seg_raw.mp4.
 """
@@ -20,7 +22,7 @@ for _p in ("/opt/hatch/workflow-skills/custom-connector-setup/bin",
 from dynamic_credentials import add_surrogate_to_request
 
 BASE = "https://www.runninghub.cn"
-WF = "2110385615559806978"
+WF = "2115084874603384833"
 CRED = "custom.runninghub"
 UA = "h3xg-dispatch/1.0"
 
@@ -85,11 +87,9 @@ def main():
     for item in a.image:
         nid, _, path = item.partition("=")
         nodes.append({"nodeId": nid, "fieldName": "image", "fieldValue": upload_media(path)})
-    silence_path = os.path.join(a.out_dir, f"silence_{a.duration:g}s.wav")
-    make_silence(a.duration, silence_path)
-    silence = upload_media(silence_path)
-    for nid in ("38", "67", "68"):
-        nodes.append({"nodeId": nid, "fieldName": "audio", "fieldValue": silence})
+    # New A: no silence fill (preset audio already off in-flow, user 2026-10-27).
+    # Audio nodes 38/67/68 are left untouched unless the caller explicitly
+    # adds them; do not re-introduce the old three-silence rule here.
     r = post_json(f"/openapi/v2/run/workflow/{WF}",
                   {"nodeInfoList": nodes, "instanceType": "default", "usePersonalQueue": False})
     check(r, "dispatch")
