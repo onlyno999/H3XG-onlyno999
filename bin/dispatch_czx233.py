@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
-"""Dispatcher for the CZX233 exit (API-only).
-Workflow 2114996355134476290 (CZX233 【最强单采】双重显存优化高画质30秒直出流, supersedes 2108739345095155713 on 2026-10-26).
+"""Dispatcher for the B exit (API-only, formerly CZX233).
+Workflow 2115006538464190466 (H3爆裂冲击帧之【复仇之刃】, supersedes 2114996355134476290 on 2026-10-28, H3XG-only project).
 API node map (2026-10-26 probes + direct dispatch):
 238/value prompt / 227/value duration seconds / 228 aspect_ratio + megapixels /
 129/noise_seed (control_after_generate=randomize: a set seed may still be randomized) /
 199/image ref1 / 188/image ref2 / 189/image ref3 / 190/image ref4 / 191/image ref5 / 192/image ref6 (6 images total, API direct).
-API hangs 199/188 normally; canvas switch 200 CONTROLS API availability: images 1-3 ON, 4-6 OFF by default in new workflow 2114996355134476290, so 190/191/192 return node_not_found unless the corresponding switch row in node 200 is opened first (2026-10-26 canvas check).
+API hangs 199/188 normally; canvas switch 200 CONTROLS API availability on the old workflow 2114996355134476290: images 1-3 ON, 4-6 OFF by default (2026-10-26 canvas check). On the new B workflow 2115006538464190466, images 1-3 are verified by real dispatches; switch state for 190/191/192 is NOT verified on the new B, probe before hanging 190+.
 Full slot table (6 images + 3 audio + 1 video) is in references/node_map_czx233.md.
 Dialogue is native via prompt (<d> + (Sx)); no audio refs are hung.
 """
@@ -19,14 +19,14 @@ except ImportError:
     from dynamic_credentials import add_surrogate_to_request
 
 BASE = "https://www.runninghub.cn"
-WF = "2114996355134476290"
+WF = "2115006538464190466"
 
 ap = argparse.ArgumentParser()
 ap.add_argument("--prompt-file", required=True)
 ap.add_argument("--duration", type=float, default=10)
 ap.add_argument("--seed", type=int, default=20261060)
 ap.add_argument("--aspect", default="9:16 (Portrait Widescreen)")
-ap.add_argument("--megapixels", type=float, default=0.94)  # B分辨率定死：736x1280 / 1280x736，见SKILL
+ap.add_argument("--megapixels", type=float, default=0.94)  # B分辨率定死：736x1312 / 1280x736，见SKILL
 ap.add_argument("--out", required=True)
 ap.add_argument("--images", nargs="*", default=[])
 ap.add_argument("--videos", nargs="*", default=[])
